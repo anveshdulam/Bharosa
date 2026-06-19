@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --cream: #F7F0E4;
+  --forest: #14322A;
+  --terracotta: #C25B3D;
+  --gold: #DE9F3D;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--forest);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism base */
+.glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.glass-dark {
+  background: rgba(20, 50, 42, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-cream {
+  background: rgba(247, 240, 228, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(247, 240, 228, 0.5);
+}
+
+/* Perspective for 3D cards */
+.perspective {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--forest);
+  border-radius: 3px;
+}
+
+/* Blob animations */
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(50px, -40px) scale(1.08); }
+  50% { transform: translate(-30px, 50px) scale(0.93); }
+  75% { transform: translate(-50px, -20px) scale(1.04); }
+}
+
+.blob-1 { animation: blob-drift 18s ease-in-out infinite; }
+.blob-2 { animation: blob-drift 22s ease-in-out 4s infinite reverse; }
+.blob-3 { animation: blob-drift 26s ease-in-out 8s infinite; }
+
+/* Float chips */
+@keyframes float-chip {
+  0%, 100% { transform: translateY(0px) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-12px) rotate(var(--r, 0deg)); }
+}
+
+.chip-float {
+  animation: float-chip 5s ease-in-out infinite;
+}
+.chip-float-1 { animation-delay: 0s; --r: -3deg; }
+.chip-float-2 { animation-delay: 1.5s; --r: 2deg; }
+.chip-float-3 { animation-delay: 3s; --r: -1.5deg; }
+
+/* Progress bar shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #DE9F3D 25%, #f0c060 50%, #DE9F3D 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* Section reveal */
+.section-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+}
